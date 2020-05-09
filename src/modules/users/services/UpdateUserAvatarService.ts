@@ -3,7 +3,7 @@ import { inject, injectable } from 'tsyringe'
 import User from '@modules/users/infra/typeorm/entities/User'
 import AppError from '@shared/errors/AppError'
 import IUsersRepository from '@modules/users/repositories/IUsersRepository'
-import IStorageProvider from '@shared/providers/StorageProviders/models/IStorageProvider'
+import IStorageProvider from '@shared/container/providers/StorageProviders/models/IStorageProvider'
 
 interface IRequestDTO {
   user_id: string
