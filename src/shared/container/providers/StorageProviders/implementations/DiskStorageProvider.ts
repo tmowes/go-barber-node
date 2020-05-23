@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import path from 'path'
 import fs from 'fs'
 import uploadConfig from '@config/upload'

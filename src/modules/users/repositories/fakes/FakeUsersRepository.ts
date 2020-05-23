@@ -8,12 +8,12 @@ export default class FakeUsersRepository implements IUsersRepository {
   private users: User[] = []
 
   public async findById(id: string): Promise<User | undefined> {
-    const userId = this.users.find((user) => user.id === id)
+    const userId = this.users.find(user => user.id === id)
     return userId
   }
 
   public async findByEmail(email: string): Promise<User | undefined> {
-    const userEmail = this.users.find((user) => user.email === email)
+    const userEmail = this.users.find(user => user.email === email)
     return userEmail
   }
 
@@ -22,7 +22,7 @@ export default class FakeUsersRepository implements IUsersRepository {
   }: IFindAllProvidersDTO): Promise<User[]> {
     let { users } = this
     if (except_user_id) {
-      users = this.users.filter((user) => user.id !== except_user_id)
+      users = this.users.filter(user => user.id !== except_user_id)
     }
     return users
   }
@@ -39,9 +39,7 @@ export default class FakeUsersRepository implements IUsersRepository {
   }
 
   public async save(user: User): Promise<User> {
-    const userIndex = this.users.findIndex(
-      (findUser) => findUser.id === user.id,
-    )
+    const userIndex = this.users.findIndex(findUser => findUser.id === user.id)
     this.users[userIndex] = user
     return user
   }

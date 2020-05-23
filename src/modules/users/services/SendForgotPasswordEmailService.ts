@@ -1,8 +1,6 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { inject, injectable } from 'tsyringe'
 import path from 'path'
 
-import User from '@modules/users/infra/typeorm/entities/User'
 import AppError from '@shared/errors/AppError'
 import IUsersRepository from '@modules/users/repositories/IUsersRepository'
 import IUserTokensRepository from '@modules/users/repositories/IUserTokensRepository'
@@ -46,7 +44,7 @@ export default class SendForgotPasswordEmailService {
         file: forgotPasswordTemplate,
         variables: {
           name: user.name,
-          link: `http://localhost:3000/reset_password?token=${token}`,
+          link: `${process.env.APP_WEB_URL}/reset_password?token=${token}`,
         },
       },
     })

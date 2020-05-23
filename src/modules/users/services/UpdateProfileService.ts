@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { inject, injectable } from 'tsyringe'
 
 import User from '@modules/users/infra/typeorm/entities/User'
@@ -42,7 +41,7 @@ export default class UpdateProfileService {
     user.email = email
     if (password && !old_password) {
       throw new AppError(
-        'You need inform the old passoword to set a new password',
+        'You need inform the old password to set a new password',
       )
     }
     if (password && old_password) {

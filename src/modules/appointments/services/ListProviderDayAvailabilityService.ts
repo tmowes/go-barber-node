@@ -1,7 +1,5 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { inject, injectable } from 'tsyringe'
-import { getDaysInMonth, getDate, getHours, isAfter } from 'date-fns'
+import { getHours, isAfter } from 'date-fns'
 
 import IAppointmentsRepository from '@modules/appointments/repositories/IAppointmentsRepository'
 
@@ -27,7 +25,7 @@ export default class ListProviderDayAvailabilityService {
     month,
     year,
   }: IRequestDTO): Promise<IResponseDTO> {
-    const appointments = await this.appointmentsRepository.findAllInDayProvider(
+    const appointments = await this.appointmentsRepository.findAllInDayFromProvider(
       {
         provider_id,
         year,
@@ -41,9 +39,9 @@ export default class ListProviderDayAvailabilityService {
       (_, index) => index + hourStart,
     )
     const currentDate = new Date(Date.now())
-    const availability = eachHourArray.map((hour) => {
+    const availability = eachHourArray.map(hour => {
       const hasAppointmentsInHour = appointments.find(
-        (appointment) => getHours(appointment.date) === hour,
+        appointment => getHours(appointment.date) === hour,
       )
       const compareDate = new Date(year, month - 1, day, hour)
       return {
@@ -52,7 +50,5 @@ export default class ListProviderDayAvailabilityService {
       }
     })
     return availability
-    // const availability = [{ hour: 9, available: false }]
-    // return availability
   }
 }

@@ -14,6 +14,7 @@ export default class UpdateUserAvatarService {
   constructor(
     @inject('UsersRepository')
     private usersRepository: IUsersRepository,
+
     @inject('StorageProvider')
     private storageProvider: IStorageProvider,
   ) {}
@@ -25,7 +26,7 @@ export default class UpdateUserAvatarService {
     const user = await this.usersRepository.findById(user_id)
     if (!user) {
       throw new AppError(
-        'Somente usuarios autenticados podem trocar avatar',
+        'Somente usuários autenticados podem trocar avatar',
         401,
       )
     }

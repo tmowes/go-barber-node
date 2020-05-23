@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import AppError from '@shared/errors/AppError'
 import FakeAppointmentsRepository from '@modules/appointments/repositories/fakes/FakeAppointmentsRepository'
 import ListProviderDayAvailabilityService from './ListProviderDayAvailabilityService'
 

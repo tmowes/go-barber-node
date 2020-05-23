@@ -32,17 +32,17 @@ export default class AuthenticateUserService {
   }: IRequestDTO): Promise<IResponseDTO> {
     const user = await this.usersRepository.findByEmail(email)
     if (!user) {
-      throw new AppError('Email ou senha invalidos.', 401)
+      throw new AppError('Email ou senha inválidos.', 401)
     }
     const passwordMatched = await this.hashProvider.compareHash(
       password,
       user.password,
     )
     if (!passwordMatched) {
-      throw new AppError('Email ou senha invalidos.', 401)
+      throw new AppError('Email ou senha inválidos.', 401)
     }
 
-    // Usuario autenticado sign ({payload},'key', {configs})
+    // Usuário autenticado sign ({payload},'key', {configs})
     const { secret, expiresIn } = authConfig.jwt
 
     const token = sign({}, secret, {

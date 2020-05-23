@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-console */
 import nodemailer, { Transporter } from 'nodemailer'
 import { inject, injectable } from 'tsyringe'
@@ -14,7 +13,7 @@ export default class EtherealMailProvider implements IMailProvider {
     @inject('MailTemplateProvider')
     private mailTemplateProvider: IMailTemplateProvider,
   ) {
-    nodemailer.createTestAccount().then((account) => {
+    nodemailer.createTestAccount().then(account => {
       const transporter = nodemailer.createTransport({
         host: account.smtp.host,
         port: account.smtp.port,
