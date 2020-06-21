@@ -1,9 +1,10 @@
 import { inject, injectable } from 'tsyringe'
 
-import User from '@modules/users/infra/typeorm/entities/User'
 import AppError from '@shared/errors/AppError'
 import IUsersRepository from '@modules/users/repositories/IUsersRepository'
 import IStorageProvider from '@shared/container/providers/StorageProviders/models/IStorageProvider'
+
+import User from '@modules/users/infra/typeorm/entities/User'
 
 interface IRequestDTO {
   user_id: string
@@ -33,8 +34,8 @@ export default class UpdateUserAvatarService {
     if (user.avatar) {
       await this.storageProvider.deleteFile(user.avatar)
     }
-    await this.storageProvider.saveFile(avatarFilename)
-    user.avatar = avatarFilename
+    const filename = await this.storageProvider.saveFile(avatarFilename)
+    user.avatar = filename
     await this.usersRepository.save(user)
     return user
   }

@@ -12,7 +12,7 @@ const redisClient = redis.createClient({
 const rateLimiterRedis = new RateLimiterRedis({
   storeClient: redisClient,
   keyPrefix: 'rateLimit',
-  points: 5,
+  points: 150,
   duration: 1,
 })
 

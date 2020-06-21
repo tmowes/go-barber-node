@@ -27,7 +27,7 @@ export default class CreateUserService {
   public async execute({ name, email, password }: IRequestDTO): Promise<User> {
     const findUserInSameEmail = await this.usersRepository.findByEmail(email)
     if (findUserInSameEmail) {
-      throw new AppError('Email já cadastrado.')
+      throw new AppError('E-mail já cadastrado.')
     }
     const hashedPassword = await this.hashProvider.generateHash(password)
     const user = await this.usersRepository.create({

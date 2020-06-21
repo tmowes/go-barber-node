@@ -8,7 +8,4 @@ const providers = {
   disk: DiskStorageProvider,
   s3: S3StorageProvider,
 }
-container.registerSingleton<IStorageProvider>(
-  'DiskStorageProvider',
-  providers.s3,
-)
+container.registerSingleton<IStorageProvider>('StorageProvider', providers.disk)

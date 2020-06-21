@@ -36,6 +36,6 @@ export default class User {
   getAvatarUrl(): string | null {
     return this.avatar
       ? `${process.env.APP_API_URL}/files/${this.avatar}`
-      : null
+      : 'https://www.dovercourt.org/wp-content/uploads/2019/11/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.jpg'
   }
 }
